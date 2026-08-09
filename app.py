@@ -12,6 +12,9 @@ from flask import session
 ROOT = Path(__file__).resolve().parent
 
 app = Flask(__name__, static_folder=str(ROOT), static_url_path="")
+@app.route("/")
+def home():
+    return send_from_directory(ROOT, "index.html")
 app.secret_key = os.getenv("CHAIN_GUARD_SECRET", "dev-only-change-this-secret")
 DB_PATH = ROOT / "chainguard.db"
 
