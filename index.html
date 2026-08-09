@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChainGuard — Stop Scams Before They Spread</title>
+  <meta name="description" content="ChainGuard analyzes suspicious forwarded messages for phishing, social engineering, fake rewards, payment requests and malicious links.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body><div id="authScreen" class="auth-screen"><div class="auth-shell">
+<div class="auth-brand"><span class="brand-mark"><img src="logo.svg" alt="ChainGuard logo"></span><span>Chain<span>Guard</span></span></div>
+<div class="auth-card"><div class="auth-visual"><div class="auth-shield"><img src="logo.svg" alt="ChainGuard shield"></div><div class="auth-copy"><span class="section-kicker">PROACTIVE CYBER DEFENSE</span><h1>Pause the share.<br><em>Break the scam chain.</em></h1><p>Scan suspicious messages, URLs and screenshots before you click, pay or forward.</p></div></div>
+<div class="auth-form-wrap"><div class="auth-tabs"><button class="auth-tab active" data-auth-tab="signin">Sign in</button><button class="auth-tab" data-auth-tab="signup">Create account</button></div>
+<form id="signinForm" class="auth-form"><span class="section-kicker">WELCOME BACK</span><h2>Sign in to ChainGuard</h2><p class="auth-sub">Your account and scan history are stored securely by the ChainGuard backend.</p><label>Email<input id="signinEmail" type="email" placeholder="you@example.com" required></label><label>Password<div class="password-wrap"><input id="signinPassword" type="password" placeholder="••••••••" required><button type="button" class="show-pass" data-target="signinPassword">Show</button></div></label><div class="auth-row"><label class="check"><input type="checkbox"> Remember me</label><button type="button" class="link-btn" id="forgotBtn">Forgot password?</button></div><button class="primary-btn auth-submit" type="submit">Sign in <span>→</span></button><p class="auth-note">Your password is securely hashed before storage.</p></form>
+<form id="signupForm" class="auth-form hidden"><span class="section-kicker">GET PROTECTED</span><h2>Create your account</h2><p class="auth-sub">Create a demo profile for your ChainGuard dashboard.</p><label>Full name<input id="signupName" type="text" placeholder="Your name" required></label><label>Email<input id="signupEmail" type="email" placeholder="you@example.com" required></label><label>Password<div class="password-wrap"><input id="signupPassword" type="password" placeholder="Minimum 6 characters" minlength="6" required><button type="button" class="show-pass" data-target="signupPassword">Show</button></div></label><button class="primary-btn auth-submit" type="submit">Create account <span>→</span></button><p class="auth-note">Create an account to keep your personal scan history.</p></form></div></div></div></div>
+  <div class="bg-grid"></div>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-mark"><img src="logo.svg" alt="ChainGuard logo"></span>
+      <span class="brand-word">Chain<span>Guard</span></span>
+    </a>
+    <nav>
+      <a href="#scanner">Scanner</a>
+      <a href="#how">How it works</a>
+      <a href="#signals">Threat signals</a>
+      <a href="#safety">Safety center</a>
+    </nav>
+    <div class="user-menu"><button id="userMenuBtn" class="user-avatar">CG</button><div id="userDropdown" class="user-dropdown"><strong id="userNameDisplay">ChainGuard User</strong><small id="userEmailDisplay">demo@example.com</small><button id="logoutBtn">Sign out</button></div></div><a class="nav-cta" href="#scanner">Scan a message</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> Cybersecurity • Social Engineering Defense</div>
+        <h1>Stop scams<br><em>before they spread.</em></h1>
+        <p class="hero-text">
+          Paste a suspicious WhatsApp, SMS, email, or social-media message.
+          ChainGuard checks its wording, links, pressure tactics and financial requests,
+          then explains the risk in simple language.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#scanner">Analyze a message <span>→</span></a>
+          <a class="text-btn" href="#how">See how it works</a>
+        </div>
+        <div class="trust-row">
+          <span>✓ Instant analysis</span>
+          <span>✓ AI-assisted explanations</span>
+          <span>✓ Personal scan history</span>
+        </div>
+        <div class="feature-strip">
+          <span><b>01</b> Detect</span>
+          <span><b>02</b> Explain</span>
+          <span><b>03</b> Verify</span>
+          <span><b>04</b> Protect</span>
+        </div>
+
+      </div>
+
+      <div class="hero-card">
+        <div class="scan-window">
+          <div class="window-top">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="window-label">CHAINGUARD / LIVE ANALYSIS</span>
+          </div>
+          <div class="mini-message">
+            <div class="mini-avatar">🎁</div>
+            <div>
+              <strong>Congratulations! 🎉</strong>
+              <p>You have won ₹10,000. Forward this to 10 people within 5 minutes to claim.</p>
+            </div>
+          </div>
+          <div class="mini-result">
+            <div class="risk-ring"><span>91</span><small>/100</small></div>
+            <div>
+              <span class="risk-tag">HIGH RISK</span>
+              <p>Social-engineering signals detected</p>
+            </div>
+          </div>
+          <div class="signal-lines">
+            <div><span>⚠</span> Fake reward language</div>
+            <div><span>⚠</span> Forwarding pressure</div>
+            <div><span>⚠</span> Urgency detected</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="scanner" class="scanner-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">01 / MESSAGE SCANNER</span>
+          <h2>Is this message safe?</h2>
+        </div>
+        <span class="live-badge">● READY TO SCAN</span>
+      </div>
+
+      <div class="scanner-grid">
+        <div class="input-panel">
+          <div class="panel-head">
+            <div>
+              <h3>Check before you share</h3>
+              <p>Paste a message, upload a screenshot, or inspect a suspicious URL.</p>
+            </div>
+            <span class="privacy-pill">🔒 Private</span>
+          </div>
+
+          <div class="scan-tabs">
+            <button class="scan-tab active" data-tab="messageTab">Message</button>
+            <button class="scan-tab" data-tab="urlTab">URL</button>
+            <button class="scan-tab" data-tab="imageTab">Screenshot</button>
+          </div>
+
+          <div id="messageTab" class="tab-panel active">
+            <textarea id="messageInput" placeholder="Paste a WhatsApp, SMS, email, or social-media message here..."></textarea>
+            <div class="input-footer">
+              <span id="charCount">0 characters</span>
+              <button id="clearBtn" class="ghost-btn">Clear</button>
+              <button id="scanBtn" class="primary-btn small">Analyze message <span>→</span></button>
+            </div>
+          </div>
+
+          <div id="urlTab" class="tab-panel">
+            <div class="url-box">
+              <span>🔗</span>
+              <input id="urlInput" type="text" placeholder="https://example.com/login">
+            </div>
+            <div class="input-footer">
+              <span class="url-hint">Checks URL structure and suspicious patterns</span>
+              <button id="urlScanBtn" class="primary-btn small">Check URL <span>→</span></button>
+            </div>
+          </div>
+
+          <div id="imageTab" class="tab-panel">
+            <label class="upload-zone" for="imageInput">
+              <div class="upload-icon">📸</div>
+              <strong>Upload a screenshot</strong>
+              <span>Extract visible text and scan it for scam signals</span>
+              <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp">
+            </label>
+            <div id="imageStatus" class="image-status"></div>
+            <button id="ocrScanBtn" class="primary-btn small full-btn" disabled>Extract & analyze <span>→</span></button>
+          </div>
+
+          <div class="examples">
+            <span>Try an example:</span>
+            <button data-example="reward">Fake reward</button>
+            <button data-example="bank">Bank alert</button>
+            <button data-example="safe">Normal message</button>
+          </div>
+        </div>
+
+        <div class="result-panel" id="resultPanel">
+          <div class="empty-state" id="emptyState">
+            <div class="empty-icon">⌕</div>
+            <h3>Your risk report will appear here</h3>
+            <p>Paste a message and select <strong>Analyze message</strong>.</p>
+            <div class="scan-tips">
+              <span>🔗 Links</span><span>🎁 Rewards</span><span>⏱ Urgency</span><span>💳 Payments</span>
+            </div>
+          </div>
+
+          <div class="report hidden" id="report">
+            <div class="report-top">
+              <div>
+                <span class="section-kicker">THREAT ASSESSMENT</span>
+                <h3 id="riskTitle">High risk</h3>
+              </div>
+              <div class="score-box"><strong id="scoreValue">91</strong><span>/100</span></div>
+            </div>
+            <div class="score-track"><span id="scoreBar"></span></div>
+            <p class="verdict" id="verdict"></p>
+
+            <div class="signal-list" id="signalList"></div>
+
+            <div class="ai-box">
+              <div class="ai-icon">✦</div>
+              <div>
+                <div class="ai-title">ChainGuard explanation</div>
+                <p id="aiExplanation"></p>
+              </div>
+            </div>
+
+            <div class="recommendation">
+              <span>🛑</span>
+              <div>
+                <strong>What you should do</strong>
+                <p id="recommendation"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ai-live-badge" id="aiLiveBadge">🤖 AI assistant ready</div><div class="report-actions">
+        <button id="exportBtn" class="ghost-btn">⬇ Export report</button>
+        <button id="shareBtn" class="ghost-btn">↗ Share result</button>
+      </div>
+      <p class="disclaimer">Prototype note: ChainGuard flags suspicious patterns; a risk score is not proof that a message is malicious. Verify through official channels before taking action.</p>
+    </section>
+
+    <section class="action-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">QUICK RESPONSE</span>
+          <h2>If you think it’s a scam</h2>
+        </div>
+      </div>
+      <div class="action-grid">
+        <article><span>01</span><div>🛑</div><h3>Stop</h3><p>Do not click, forward, reply, pay, or install anything from the suspicious message.</p></article>
+        <article><span>02</span><div>🔐</div><h3>Protect</h3><p>Never share OTPs, UPI PINs, passwords, CVV or remote-access details with callers.</p></article>
+        <article><span>03</span><div>☎️</div><h3>Verify</h3><p>Use the organization’s official app, website, or trusted contact—not the message itself.</p></article>
+        <article><span>04</span><div>📢</div><h3>Report</h3><p>If money or credentials were compromised, contact the relevant bank/service and official cyber-fraud reporting channel quickly.</p></article>
+      </div>
+    </section>
+
+
+
+    <section class="ai-section" id="aiAssistant">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">AI SECURITY COPILOT</span>
+          <h2>Ask ChainGuard AI</h2>
+        </div>
+        <span class="privacy-pill">🛡 Defensive AI</span>
+      </div>
+      <div class="ai-grid">
+        <div class="ai-intro">
+          <div class="ai-orb">✦</div>
+          <h3>Understand the threat — not just the score.</h3>
+          <p>Ask why a message looks suspicious, what to do next, or how to recognize similar scams.</p>
+          <div class="ai-prompts">
+            <button data-ai-prompt="Why is this message suspicious?">Why is this suspicious?</button>
+            <button data-ai-prompt="What should I do right now?">What should I do?</button>
+            <button data-ai-prompt="How can I verify this safely?">How do I verify it?</button>
+          </div>
+        </div>
+        <div class="ai-chat">
+          <div id="aiChatMessages" class="ai-chat-messages">
+            <div class="ai-msg bot"><span>AI</span><p>Hi! I can explain scam signals and suggest safe next steps. Never share OTPs, PINs or passwords with me.</p></div>
+          </div>
+          <form id="aiChatForm" class="ai-chat-form">
+            <input id="aiQuestion" placeholder="Ask ChainGuard AI about a suspicious message..." autocomplete="off">
+            <button type="submit" class="primary-btn small">Ask <span>→</span></button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-section" id="dashboard">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">04 / SECURITY DASHBOARD</span>
+          <h2>Your scan intelligence</h2>
+        </div>
+        <button id="clearHistoryBtn" class="ghost-btn">Clear scan history</button>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card"><span>MESSAGES SCANNED</span><strong id="statTotal">0</strong><small>Across this browser</small></article>
+        <article class="stat-card danger-card"><span>HIGH RISK</span><strong id="statHigh">0</strong><small>Immediate caution advised</small></article>
+        <article class="stat-card warn-card"><span>SUSPICIOUS</span><strong id="statMedium">0</strong><small>Verify before acting</small></article>
+        <article class="stat-card safe-card"><span>LOW RISK</span><strong id="statLow">0</strong><small>No strong pattern matched</small></article>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="history-panel">
+          <div class="panel-head"><div><h3>Recent scans</h3><p>Your latest local scan history.</p></div><span class="privacy-pill">🔒 Local only</span></div>
+          <div id="historyList" class="history-list">
+            <div class="history-empty">No scans yet. Analyze a message to build your local history.</div>
+          </div>
+        </div>
+        <div class="threat-panel">
+          <div class="panel-head"><div><h3>Threat pattern activity</h3><p>Signals detected in this session.</p></div></div>
+          <div class="threat-bars">
+            <div><span>🎁 Rewards</span><b id="barReward"></b></div>
+            <div><span>📣 Forwarding</span><b id="barForward"></b></div>
+            <div><span>🔐 Credentials</span><b id="barCredential"></b></div>
+            <div><span>💳 Payments</span><b id="barPayment"></b></div>
+            <div><span>🔗 Links</span><b id="barLink"></b></div>
+            <div><span>⏱ Urgency</span><b id="barUrgency"></b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="safety" class="safety-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">05 / SAFETY CENTER</span>
+          <h2>Build safer digital habits</h2>
+          <p>A simple checklist for the moments when a message feels urgent, exciting, or suspicious.</p>
+        </div>
+        <div class="safety-score">
+          <span>SAFETY SHIELD</span>
+          <strong id="safetyScore">0%</strong>
+        </div>
+      </div>
+
+      <div class="safety-grid">
+        <div class="checklist-panel">
+          <div class="panel-head">
+            <div><h3>5-second safety checklist</h3><p>Mark the habits you already follow.</p></div>
+            <span class="privacy-pill">🛡 Personal</span>
+          </div>
+          <div class="safety-progress"><span id="safetyProgress"></span></div>
+          <div class="checklist">
+            <label class="safety-check"><input type="checkbox" data-safety="otp"><span><b>Never share an OTP</b><small>Legitimate support should not need your OTP, PIN or password.</small></span></label>
+            <label class="safety-check"><input type="checkbox" data-safety="link"><span><b>Verify links independently</b><small>Open the official app or type the official website yourself.</small></span></label>
+            <label class="safety-check"><input type="checkbox" data-safety="urgency"><span><b>Pause when there is urgency</b><small>“Act now” is a common social-engineering pressure tactic.</small></span></label>
+            <label class="safety-check"><input type="checkbox" data-safety="reward"><span><b>Question unexpected rewards</b><small>Prize and cashback claims often try to trigger excitement.</small></span></label>
+            <label class="safety-check"><input type="checkbox" data-safety="payment"><span><b>Verify before paying</b><small>Confirm requests through a trusted official channel first.</small></span></label>
+          </div>
+        </div>
+
+        <div class="playbook-panel">
+          <div class="panel-head"><div><h3>Scam playbook</h3><p>Common patterns ChainGuard looks for.</p></div></div>
+          <div class="playbook-grid">
+            <button class="playbook-card" data-ai-prompt="How do fake reward and cashback scams work?"><span>🎁</span><b>Fake rewards</b><small>Prize, cashback & lottery bait</small><i>Ask AI →</i></button>
+            <button class="playbook-card" data-ai-prompt="How can I identify a phishing link safely?"><span>🔗</span><b>Phishing links</b><small>Fake login & verification pages</small><i>Ask AI →</i></button>
+            <button class="playbook-card" data-ai-prompt="Why do scammers create urgency and pressure?"><span>⏱</span><b>Urgency tricks</b><small>Act-now pressure and threats</small><i>Ask AI →</i></button>
+            <button class="playbook-card" data-ai-prompt="What should I do if someone asks for my OTP or PIN?"><span>🔐</span><b>Credential theft</b><small>OTP, PIN & password requests</small><i>Ask AI →</i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="how-section">
+      <div class="section-heading centered">
+        <span class="section-kicker">02 / HOW IT WORKS</span>
+        <h2>Three steps. One safer decision.</h2>
+        <p>Designed for people who don’t need to be cybersecurity experts.</p>
+      </div>
+      <div class="steps">
+        <article><span>01</span><div class="step-icon">📋</div><h3>Paste</h3><p>Copy a suspicious message from WhatsApp, SMS, email, or social media.</p></article>
+        <article><span>02</span><div class="step-icon">🔎</div><h3>Analyze</h3><p>ChainGuard checks for social-engineering patterns, suspicious links and financial pressure.</p></article>
+        <article><span>03</span><div class="step-icon">🛡</div><h3>Act safely</h3><p>Get a clear risk report, explanation, and practical next step before you forward or click.</p></article>
+      </div>
+    </section>
+
+    <section id="signals" class="signals-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">03 / THREAT SIGNALS</span>
+          <h2>What ChainGuard looks for</h2>
+        </div>
+      </div>
+      <div class="signal-cards">
+        <article><div class="signal-icon">🎁</div><h3>Fake rewards</h3><p>Prize, cashback, lottery, refund and “you won” claims designed to trigger excitement.</p></article>
+        <article><div class="signal-icon">⏱</div><h3>Urgency</h3><p>Pressure such as “act now”, “within 5 minutes”, or “offer expires today”.</p></article>
+        <article><div class="signal-icon">📣</div><h3>Viral forwarding</h3><p>Requests to forward to 5, 10, or more contacts or groups to unlock a benefit.</p></article>
+        <article><div class="signal-icon">🔐</div><h3>Credential requests</h3><p>Requests for OTPs, PINs, passwords, CVV, card details or account verification.</p></article>
+        <article><div class="signal-icon">💳</div><h3>Payment pressure</h3><p>Unexpected fees, transfers, deposits, QR payments or “pay to receive” instructions.</p></article>
+        <article><div class="signal-icon">🔗</div><h3>Suspicious links</h3><p>Unusual domains, shortened URLs, fake login pages and reward-claim links.</p></article>
+      </div>
+    </section>
+
+    <section class="impact">
+      <div>
+        <span class="section-kicker">THE MISSION</span>
+        <h2>Pause the share.<br>Break the scam chain.</h2>
+      </div>
+      <p>One forwarded message can reach dozens of people. ChainGuard adds a simple safety checkpoint before a suspicious message becomes someone else’s problem.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand"><span class="brand-mark">🛡</span><span>Chain<span>Guard</span></span></div>
+    <p>Hack Devengers 1.0 • Built for safer digital communication • Explainable cybersecurity prototype</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="script.js"></script>
+<div id="toast" class="toast"></div></body>
+</html>
