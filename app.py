@@ -387,9 +387,6 @@ User question:
     return jsonify({"answer": ai, "live": bool(GEMINI_API_KEY)})
 
 
-@app.get("/")
-def home():
-    return send_from_directory(ROOT, "index.html")
 
 @app.post("/api/analyze-url")
 def analyze_url_endpoint():
